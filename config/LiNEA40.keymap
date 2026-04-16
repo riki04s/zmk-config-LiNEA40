@@ -9,9 +9,9 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #define MOUSE 1
-#define MARK 2
-#define CURSOR 3
-#define FUNCTION 4
+#define NAV 2
+#define NUMFN 3
+#define SYMBOL 4
 #define SCROLL 5
 #define WIRELESS 6
 
@@ -47,7 +47,7 @@
 
 &msc_input_listener {
     speed_up {
-        layers = <FUNCTION>;
+        layers = <SYMBOL>;
         input-processors = <&zip_wheel_scaler 3 1>; //スクロールを3倍速にする
     };
 };
@@ -124,12 +124,12 @@
         default_layer {
             bindings = <
 &kp Q             &kp W         &kp E                    &kp R           &kp T                                        &kp Y        &kp U  &kp I                &kp O          &kp P
-&kp A             &kp S         &kp D                    &kp F           &kp G                                        &kp H        &kp J  &kp K                &kp L          &lt 5 MINUS
+&kp A             &kp S         &kp D                    &kp F           &kp G                                        &kp H        &kp J  &kp K                &kp L          &kp MINUS
 &mt LEFT_SHIFT Z  &kp X         &kp C                    &kp V           &kp B                                        &kp N        &kp M  &kp COMMA            &kp DOT        &mt RIGHT_SHIFT SLASH
-&kp LCTRL         &kp LEFT_WIN  &mt LEFT_ALT LANGUAGE_2  &kp KP_NUMLOCK  &lt 5 SPACE  &lt 2 LANG1    &lt 2 BACKSPACE  &lt 4 ENTER         &lt 6 RIGHT_BRACKET  &kp BACKSLASH  &mt RIGHT_SHIFT SLASH
+&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT             &lt 5 LANGUAGE_2  &lt 3 SPACE  &lt 2 LANG1    &kp BACKSPACE    &lt 4 ENTER         &mo 4                &kp RIGHT_ALT  &kp RCTRL
             >;
 
-            sensor-bindings = <&mouse_scrl SCRL_DOWN SCRL_UP>;
+            sensor-bindings = <&re_kp C_VOLUME_DOWN C_VOLUME_UP>;
         };
 
         //1
@@ -145,12 +145,12 @@
 
         //2
 
-        MARK {
+        NAV {
             bindings = <
-&kp EXCLAMATION             &kp AT           &kp HASH         &kp DOLLAR     &kp PERCENT                      &kp CARET     &kp AMPERSAND  &kp ASTERISK           &kp LEFT_PARENTHESIS  &kp LBKT
-&kp SLASH                   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp SEMICOLON  &kp SEMICOLON                    &kp C_MUTE    &kp LS(LBKT)   &kp RIGHT_BRACKET      &kp BACKSLASH         &kp EQUAL
-&mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp APOS       &kp SQT                          &kp KP_EQUAL  &kp INT3       &kp LS(RIGHT_BRACKET)  &kp LS(BACKSLASH)     &kp LS(INT1)
-&trans                      &trans           &trans           &trans         &trans         &trans    &trans  &trans                       &kp ASTERISK           &kp LEFT_PARENTHESIS  &kp LS(QUESTION)
+&trans          &kp PAGE_UP  &kp UP_ARROW  &trans     &kp PAGE_DOWN                    &trans   &trans  &trans  &trans  &trans
+&trans          &kp HOME     &kp LEFT      &kp DOWN   &kp RIGHT                        &kp END  &trans  &trans  &trans  &trans
+&kp LEFT_SHIFT  &trans       &trans        &trans     &trans                            &trans   &trans  &trans  &trans  &kp RIGHT_SHIFT
+&trans          &trans       &trans        &trans     &trans        &kp C_MUTE  &kp DEL  &trans          &trans  &trans  &trans
             >;
 
             sensor-bindings = <&re_kp C_VOLUME_DOWN C_VOLUME_UP>;
@@ -158,26 +158,26 @@
 
         //3
 
-        CURSOR {
+        NUMFN {
             bindings = <
-&trans    &kp LC(LG(LEFT_ARROW))  &kp UP_ARROW  &kp LC(LG(RIGHT_ARROW))  &trans                       &kp KP_MULTIPLY  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp KP_PLUS
-&trans    &kp LEFT_ARROW          &kp DOWN      &kp RIGHT_ARROW          &trans                       &kp KP_SLASH     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp KP_MINUS
-&kp HOME  &kp PAGE_DOWN           &kp END       &kp PAGE_UP              &trans                       &kp UNDER        &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp ENTER
-&trans    &trans                  &trans        &trans                   &trans  &trans    &kp ENTER  &kp NUMBER_0                   &kp DOT       &kp ENTER     &kp QUESTION
+&trans        &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0                   &trans  &kp F7  &kp F8  &kp F9  &kp F12
+&trans        &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp KP_PLUS                    &trans  &kp F4  &kp F5  &kp F6  &kp F11
+&kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL                      &trans  &kp F1  &kp F2  &kp F3  &kp F10
+&trans        &trans        &trans        &trans        &trans        &trans    &trans  &trans          &trans  &trans  &mo 6
             >;
         };
 
         //4
 
-        FUNCTION {
+        SYMBOL {
             bindings = <
-&kp F1  &kp F2  &kp F3  &kp F4   &kp F5                     &trans      &trans  &kp LA(PRINTSCREEN)  &trans  &kp LC(LA(DELETE))
-&kp F6  &kp F7  &kp F8  &kp F9   &kp F10                    &trans      &trans  &kp LS(LG(S))        &trans  &kp LC(LS(ESCAPE))
-&trans  &trans  &trans  &kp F11  &kp F12                    &kp C_MUTE  &trans  &trans               &trans  &kp LC(LA(INS))
-&trans  &trans  &trans  &trans   &trans   &trans    &trans  &trans              &trans               &trans  &trans
+&trans  &kp AMPERSAND    &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS              &trans      &kp LBKT              &kp RIGHT_BRACKET      &trans              &trans
+&trans  &kp DOLLAR       &kp PERCENT   &kp CARET             &kp KP_PLUS                        &trans      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LS(BACKSLASH)   &trans
+&trans  &kp EXCLAMATION  &kp AT        &kp HASH              &kp EQUAL                          &kp C_MUTE  &kp LS(LBKT)          &kp LS(RIGHT_BRACKET)  &trans              &trans
+&trans  &trans           &trans        &trans                &trans          &trans      &trans  &trans                            &trans                 &trans              &mo 6
             >;
 
-            sensor-bindings = <&mouse_scrl SCRL_DOWN SCRL_UP>;
+            sensor-bindings = <&re_kp C_VOLUME_DOWN C_VOLUME_UP>;
         };
 
         //5
