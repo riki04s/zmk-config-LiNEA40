@@ -139,7 +139,7 @@
 &kp LCTRL         &kp LEFT_WIN  &mt LEFT_ALT LANGUAGE_2  &none  &lt 3 SPACE  &lt 2 RA(GRAVE)    &kp BACKSPACE  &lt 4 ENTER         &lt 4 LANGUAGE_2  &kp LANG1  &kp RIGHT_SHIFT
             >;
 
-            sensor-bindings = <&re_kp C_VOL_UP C_VOLUME_DOWN>;
+            sensor-bindings = <&mouse_scrl SCRL_UP SCRL_DOWN>;
         };
 
         //1
@@ -163,7 +163,7 @@
 &trans          &trans          &trans          &trans           &trans         &kp C_MUTE    &kp DEL  &trans          &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&re_kp C_VOLUME_DOWN C_VOLUME_UP>;
+            sensor-bindings = <&re_kp C_VOL_UP C_VOLUME_DOWN>;
         };
 
         //3
@@ -187,7 +187,7 @@
 &trans           &trans       &trans       &trans                &trans                 &trans    &trans  &trans                        &trans                 &trans            &trans
             >;
 
-            sensor-bindings = <&re_kp C_VOLUME_DOWN C_VOLUME_UP>;
+            sensor-bindings = <&re_kp C_VOL_UP C_VOLUME_DOWN>;
         };
 
         //5
@@ -200,7 +200,7 @@
 &trans    &trans           &trans     &trans           &trans           &trans    &trans  &kp NUMBER_0                   &kp NUMBER_0  &kp DOT       &kp QUESTION
             >;
 
-            sensor-bindings = <&inc_dec_kp DOWN_ARROW UP_ARROW>;
+            sensor-bindings = <&inc_dec_kp UP_ARROW DOWN_ARROW>;
         };
 
         //6
@@ -213,7 +213,7 @@
 &trans        &trans        &trans        &trans        &trans        &trans    &bootloader  &studio_unlock                &trans        &trans        &bt BT_CLR_ALL
             >;
 
-            sensor-bindings = <&inc_dec_kp RIGHT_ARROW LEFT_ARROW>;
+            sensor-bindings = <&inc_dec_kp LEFT_ARROW RIGHT_ARROW>;
         };
     };
 };
